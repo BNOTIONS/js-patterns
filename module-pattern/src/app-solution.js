@@ -11,6 +11,7 @@ var TodoList = (function($, _){
     // Private Members
     var el = false;
     var $el = false;
+    var item_count = 0;
 
     // Constructor
     var TodoList = function(target_el) {
@@ -21,6 +22,7 @@ var TodoList = (function($, _){
 
     // Public API
     TodoList.prototype = {
+        items: [],
         start: function() {
             var self = this;
             $el.find("button").on("click", function(){
@@ -39,7 +41,9 @@ var TodoList = (function($, _){
         },
 
         addItem: function(itemText) {
-            var item = new TodoItem(itemText, "#items");
+            item_count += 1;
+            var item = new TodoItem(itemText, "#items",  item_count);
+            this.items.push(item);
         },
 
         updateComplete: function(mod) {
@@ -62,10 +66,11 @@ var TodoItem = (function($, _){
     var complete = false;
 
     // Constructor
-    var TodoItem = function(item_text, target_list) {
+    var TodoItem = function(item_text, target_list, count) {
         text = item_text;
+        this.text = text;
         list_el = target_list;
-        el = _.template(template, {text: item_text}); // Render Template into HTML
+        el = _.template(template, {text: item_text, count: count}); // Render Template into HTML
         $el = $(el); // Create jQuery object and cache it in private variables
         
         // Bind Events
