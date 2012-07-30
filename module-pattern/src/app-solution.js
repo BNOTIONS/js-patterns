@@ -8,15 +8,11 @@ _.mixin({
 });
 
 var TodoList = (function($, _){
-    // Private Members
-    var el = false;
-    var $el = false;
-    var item_count = 0;
 
     // Constructor
     var TodoList = function(target_el) {
-        el = target_el;
-        $el = $(el);
+        this.el = target_el;
+        this.$el = $(this.el);
         return this;
     };
 
@@ -25,7 +21,7 @@ var TodoList = (function($, _){
         items: [],
         start: function() {
             var self = this;
-            $el.find("button").on("click", function(){
+            this.$el.find("button").on("click", function(){
                 _.l('click');
                 self.clickAdd();
             });
@@ -33,21 +29,16 @@ var TodoList = (function($, _){
         },
 
         clickAdd: function() {
-            var todo_text = $el.find('input').val();
+            var todo_text = this.$el.find('input').val();
             if(todo_text) {
-                $el.find('input').val('');
+                this.$el.find('input').val('');
                 this.addItem(todo_text);
             }
         },
 
         addItem: function(itemText) {
-            item_count += 1;
-            var item = new TodoItem(itemText, "#items",  item_count);
+            var item = new TodoItem(itemText, "#items");
             this.items.push(item);
-        },
-
-        updateComplete: function(mod) {
-            this.completed += mod;
         }
     };
     
@@ -56,42 +47,35 @@ var TodoList = (function($, _){
 
 var TodoItem = (function($, _){
     // Private Members
-    var el = false;
-    var $el = false;
     var template = $("#template_todo_item").html();
 
-    var todo_list = false;
-    var list_el = false;
-    var text = '';
-    var complete = false;
-
     // Constructor
-    var TodoItem = function(item_text, target_list, count) {
-        text = item_text;
+    var TodoItem = function(text, list_el) {
         this.text = text;
-        list_el = target_list;
-        el = _.template(template, {text: item_text, count: count}); // Render Template into HTML
-        $el = $(el); // Create jQuery object and cache it in private variables
+        this.list_el = list_el;
+        this.complete = false;
+        el = _.template(template, {text: this.text}); // Render Template into HTML
+        this.$el = $(el); // Create jQuery object and cache it in private variables
         
         // Bind Events
-        $el.on("click", "span, .icon-check", this.clickComplete);
-        $el.on("click", ".icon-remove", this.clickRemove);
+        this.$el.on("click", "span, .icon-check", _.bind(this.clickComplete, this));
+        this.$el.on("click", ".icon-remove", _.bind(this.clickRemove, this));
         
         // Add item to list
-        $(list_el).append($el);
+        $(list_el).append(this.$el);
         return this; // Make constructor chainable
     };
 
     // Public API
     TodoItem.prototype = {
         clickComplete: function(e) {
-            _.l('Item Clicked!' + text);
-            complete = (complete) ? false : true;
-            $el.find('span').toggleClass('done');
+            _.l('Item Clicked!' + this.text);
+            this.complete = (this.complete) ? false : true;
+            this.$el.find('span').toggleClass('done');
         },
 
         clickRemove: function(e) {
-            $el.remove();
+            this.$el.remove();
         }
     };
 
