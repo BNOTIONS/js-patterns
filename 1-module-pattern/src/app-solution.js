@@ -21,7 +21,7 @@ var TodoList = (function($, _){
         items: [],
         start: function() {
             var self = this;
-            this.$el.find("button").on("click", function(){
+            this.$el.find(".add_todo").on("click", function(){
                 _.l('click');
                 self.clickAdd();
             });
@@ -29,7 +29,7 @@ var TodoList = (function($, _){
         },
 
         clickAdd: function() {
-            var todo_text = this.$el.find('input').val();
+            var todo_text = this.$el.find('.new_todo_text').val();
             if(todo_text) {
                 this.$el.find('input').val('');
                 this.addItem(todo_text);
@@ -37,7 +37,7 @@ var TodoList = (function($, _){
         },
 
         addItem: function(itemText) {
-            var item = new TodoItem(itemText, "#items");
+            var item = new TodoItem(itemText, this.$el.find('.todo_items'));
             this.items.push(item);
         }
     };
@@ -51,8 +51,10 @@ var TodoItem = (function($, _){
 
     // Constructor
     var TodoItem = function(text, list_el) {
+        _.l('New Item');
         this.text = text;
-        this.list_el = list_el;
+        this.$list_el = $(list_el);
+        _.l(this.$list_el);
         this.complete = false;
         el = _.template(template, {text: this.text}); // Render Template into HTML
         this.$el = $(el); // Create jQuery object and cache it in private variables
@@ -62,7 +64,7 @@ var TodoItem = (function($, _){
         this.$el.on("click", ".icon-remove", _.bind(this.clickRemove, this));
         
         // Add item to list
-        $(list_el).append(this.$el);
+        this.$list_el.append(this.$el);
         return this; // Make constructor chainable
     };
 
@@ -83,5 +85,5 @@ var TodoItem = (function($, _){
 })($, _);
 
 $(function(){
-    window.todo_list = new TodoList('#new_todo').start();
+    window.todo_list = new TodoList('#his_todo_list').start();
 });

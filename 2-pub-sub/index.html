@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Best Todo-List Ever</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/font-awesome.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="toast" class="row" style="position: absolute; display: none;">
+  <div class="span8 offset1"><div class="alert alert-info toast_text">New Item Added:</div></div>
+</div>
+
+<div class="row">
+  <div class="span8 offset1">
+    
+    <div class="well" id="his_todo_list">
+      <h1>Best Todo-List Ever</h1>
+      
+      <!-- Input Box / Button -->
+      <div>
+        <div class="input-prepend input-append">
+          <span class="add-on"><i class="icon-bullhorn"></i></span><input type="text" class="span6 new_todo_text" placeholder="Type Your Todo Here..."></input><button class="btn btn-success add_todo"><i class="icon-plus-sign icon-white"></i> Add</button>
+        </div>
+      </div>
+    </div>
+
+    
+    <ul class="todo_items">
+    <ul>
+
+  </div>
+</div>
+  
+  <script id="template_todo_item" type="text">
+    <li class="well">
+      <i class="icon-check icon-large"></i> <span><%= text %></span> <i class="icon-remove icon-large"></i>
+    </li>
+  </script>
+
+  <script src="lib/jquery-1.7.2.js"></script>
+  <script src="lib/underscore.js"></script>
+  <script src="src/app-solution.js"></script>
+</body>
+</html>
