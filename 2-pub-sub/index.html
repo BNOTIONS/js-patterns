@@ -11,8 +11,12 @@
 </head>
 <body>
 
-<div id="toast" class="row" style="position: absolute; display: none;">
+<div id="toast_new" class="row" style="position: absolute; display: none;">
   <div class="span8 offset1"><div class="alert alert-info toast_text">New Item Added:</div></div>
+</div>
+
+<div id="toast_remove" class="row" style="position: absolute; display: none;">
+  <div class="span8 offset1"><div class="alert alert-error toast_text">New Item Added:</div></div>
 </div>
 
 <div class="row">
@@ -26,12 +30,15 @@
         <div class="input-prepend input-append">
           <span class="add-on"><i class="icon-bullhorn"></i></span><input type="text" class="span6 new_todo_text" placeholder="Type Your Todo Here..."></input><button class="btn btn-success add_todo"><i class="icon-plus-sign icon-white"></i> Add</button>
         </div>
+        <div id="progress" class="btn btn-success"><span class="completed">0</span> / <span class="total">0</span></div>
       </div>
+
+      <ul class="todo_items">
+      <ul>
+
     </div>
 
-    
-    <ul class="todo_items">
-    <ul>
+
 
   </div>
 </div>
