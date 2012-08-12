@@ -94,8 +94,8 @@ var TodoItem = (function($, _){
         this.$list_el.append(this.$el);
 
         // Publish Toast and Progress Events
-        $.publish("toast:new", [this.text]);
-        $.publish("progress:total", [1]);
+        Events.trigger("toast:new", this.text);
+        Events.trigger("progress:total", 1);
 
         _.l("New Item Create:" + this.text);
         return this; // Make constructor chainable
@@ -113,18 +113,20 @@ var TodoItem = (function($, _){
         reportComplete: function() {
             // Fire the appropriate Event
             if(this.complete) {
-                $.publish("progress:completed", [1]);
+                Events.trigger("progress:completed", 1);
             } else {
-                $.publish("progress:completed", [-1]);
+                Events.trigger("progress:completed", -1);
             }
         },
 
         clickRemove: function(e) {
-            $.publish("progress:total", [-1]);
+            Events.trigger("progress:total", -1);
             if(this.complete) {
-                $.publish("progress:completed", [-1]);
+                Events.trigger("progress:completed", -1);
             }
-            $.publish("toast:remove", [this.text]);
+            Events.trigger("toast:remove", this.text);
+            
+            // Remove from the DOM
             this.$el.remove();
         }
     };
@@ -148,10 +150,13 @@ var Toast = (function($,_){
             // *** ProTip:
             // Use _.bind to ensure that function keeps context when
             // called by the event
-            $.subscribe(event_name, _.bind(this.toast_event, this));
+            Events.on(event_name, this.toast_event, this);
+            // Event Name --^            |            |
+            // Callback Function ---------            |
+            // Context for callback function (option)--
         },
 
-        toast_event: function(e, text) {
+        toast_event: function(text) {
             this.toast(text);
         },
 
@@ -180,13 +185,13 @@ var Progress = (function($,_){
             // *** ProTip:
             // _.bind can be used to ensure the context of anonymous
             // functions aswell.
-            $.subscribe("progress:completed", _.bind(function(e, amount){
+            Events.on("progress:completed", function(amount){
                 this.modify_completed(amount);
-            }, this));
+            }, this);
 
-            $.subscribe("progress:total", _.bind(function(e, amount){
+            Events.on("progress:total", function(amount){
                 this.modify_total(amount);
-            }, this));
+            }, this);
         },
 
         modify_completed: function(amount) {
