@@ -1,0 +1,16 @@
+#items li {
+    list-style-type: none;
+
+}
+
+#items ul {
+    margin: 0px;    
+}
+
+.icon-remove {
+    float:right;
+}
+
+.done {
+    text-decoration: line-through;
+}
