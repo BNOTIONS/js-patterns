@@ -8,27 +8,6 @@ _.mixin({
     }
 });
 
-/* jQuery Tiny Pub/Sub - v0.7 - 10/27/2011
- * http://benalman.com/
- * Copyright (c) 2011 "Cowboy" Ben Alman; Licensed MIT, GPL */
-
-(function($) {
-
-  var o = $({});
-
-  $.subscribe = function() {
-    o.on.apply(o, arguments);
-  };
-
-  $.unsubscribe = function() {
-    o.off.apply(o, arguments);
-  };
-
-  $.publish = function() {
-    o.trigger.apply(o, arguments);
-  };
-
-}(jQuery));
 
 var TodoList = (function($, _){
 
@@ -95,6 +74,10 @@ var TodoItem = (function($, _){
 
         // Publish Toast and Progress Events
         Events.trigger("toast:new", this.text);
+        // Event Name ------^            |
+        // Argument sent to callback -----
+        // Can you can send any number of arguments via this method
+        // Events.trigger('some:event', foo, bar, baz);
         Events.trigger("progress:total", 1);
 
         _.l("New Item Create:" + this.text);
@@ -144,16 +127,13 @@ var Toast = (function($,_){
 
     Toast.prototype = {
         bind: function(event_name) {
-            // Event/Function Binding Variation #1
-            // Bind event specific member function to event, keeps
-            // real member function unaware of the event system
-            // *** ProTip:
-            // Use _.bind to ensure that function keeps context when
-            // called by the event
-            Events.on(event_name, this.toast_event, this);
+            // Event/Function Binding
+            // Bind event specific member function to event
+            Events.on(event_name, this.toast, this);
             // Event Name --^            |            |
             // Callback Function ---------            |
             // Context for callback function (option)--
+            // (the value of 'this')
         },
 
         toast_event: function(text) {
@@ -180,18 +160,8 @@ var Progress = (function($,_){
 
     Progress.prototype = {
         bind: function() {
-            // Event/Function Binding Variation #2
-            // Use an anonymous function to call the member function
-            // *** ProTip:
-            // _.bind can be used to ensure the context of anonymous
-            // functions aswell.
-            Events.on("progress:completed", function(amount){
-                this.modify_completed(amount);
-            }, this);
-
-            Events.on("progress:total", function(amount){
-                this.modify_total(amount);
-            }, this);
+            Events.on("progress:completed", this.modify_completed, this);
+            Events.on("progress:total", this.modify_total, this);
         },
 
         modify_completed: function(amount) {
@@ -219,7 +189,7 @@ var Progress = (function($,_){
 // Start The Application
 // ***
 $(function(){
-    window.todo_list = new TodoList('#his_todo_list').start();
+    window.todo_list = new TodoList('#todo_list').start();
     window.progress = new Progress("#progress").bind();
 
     // Two Seperate Types Of Toasts, so two objects bound to their own event names
