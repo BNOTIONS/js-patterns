@@ -11,18 +11,20 @@
 </head>
 <body>
 
+<!-- New Item Toast -->
 <div id="toast_new" class="row" style="position: absolute; display: none;">
-  <div class="span8 offset1"><div class="alert alert-info toast_text">New Item Added:</div></div>
+  <div class="span8 offset1"><div class="alert alert-info toast_text"></div></div>
 </div>
 
+<!-- Remove Item Toast -->
 <div id="toast_remove" class="row" style="position: absolute; display: none;">
-  <div class="span8 offset1"><div class="alert alert-error toast_text">New Item Added:</div></div>
+  <div class="span8 offset1"><div class="alert alert-error toast_text"></div></div>
 </div>
 
 <div class="row">
   <div class="span8 offset1">
     
-    <div class="well" id="his_todo_list">
+    <div class="well" id="todo_list">
       <h1>Best Todo-List Ever</h1>
       
       <!-- Input Box / Button -->
@@ -30,19 +32,20 @@
         <div class="input-prepend input-append">
           <span class="add-on"><i class="icon-bullhorn"></i></span><input type="text" class="span6 new_todo_text" placeholder="Type Your Todo Here..."></input><button class="btn btn-success add_todo"><i class="icon-plus-sign icon-white"></i> Add</button>
         </div>
+
+        <!-- Todo Count -->
         <div id="progress" class="btn btn-success"><span class="completed">0</span> / <span class="total">0</span></div>
       </div>
 
       <ul class="todo_items">
       <ul>
 
-    </div>
-
-
+    </div><!-- End of #todo_list -->
 
   </div>
 </div>
   
+  <!-- uderscore template for Todo Item -->
   <script id="template_todo_item" type="text">
     <li class="well">
       <i class="icon-check icon-large"></i> <span><%= text %></span> <i class="icon-remove icon-large"></i>
