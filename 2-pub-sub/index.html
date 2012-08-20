@@ -11,6 +11,7 @@
 </head>
 <body>
 
+<!-- New Item Toast -->
 <div id="toast_new" class="row" style="position: absolute; display: none;">
   <div class="span8 offset1"><div class="alert alert-info toast_text"></div></div>
 </div>
@@ -28,7 +29,7 @@
         </div>
         
         <!--
-        *** Uncomment more for step 2!
+        *** Uncomment for step 2!
         <div id="progress" class="btn btn-success"><span class="completed">0</span> / <span class="total">0</span></div>
         -->
 
@@ -37,13 +38,14 @@
       <ul class="todo_items">
       <ul>
 
-    </div>
+    </div><!-- End of #todo_list -->
 
 
 
   </div>
 </div>
   
+  <!-- underscore template for Todo Item -->
   <script id="template_todo_item" type="text">
     <li class="well">
       <i class="icon-check icon-large"></i> <span><%= text %></span> <i class="icon-remove icon-large"></i>

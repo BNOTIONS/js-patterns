@@ -14,7 +14,10 @@ var TodoList = (function($, _){
     var TodoList = function(target_el, toast) {
         this.el = target_el;
         this.$el = $(this.el);
+
+        // Toast is now a dependency of the Todo List
         this.toast = toast;
+        
         return this;
     };
 
