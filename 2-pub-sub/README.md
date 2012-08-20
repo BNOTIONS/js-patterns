@@ -23,3 +23,7 @@ Implement a counter that shows display the total amount of item items and the am
 
 When writing the module remember that it should work totally independtly first, then Subscribe to events laters.
 
+Help
+----
+
+As always check out the 'solution' branch if you need some inspiration or get stuck. It is just one of many solutions, yours does not need to be exactly the same. Also check out the 'master' and 'solution' branches for helpful comments.
