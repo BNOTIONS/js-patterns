@@ -58,6 +58,37 @@ var Module = (function(){
 
 ```
 
+2. Returning a function
+
+In JavaScript, functions are first class. With this in mind, a function can return another function. This is the basis of the Module pattern. 
+
+```javascript
+
+var Module = (function(){
+	
+	var Module = function() {
+
+	};
+
+	return Module;
+})();
+
+```
+
+Because JavaScript is a Functional language, variable scoping happens on a function by function basis. This means that we can use the same variable name inside the self executing function as we use as the variable we use to store the result of the self executing function. Beware: always use the "var" operator. If you do not, a puppy will die.
+
+3. Scope Global Dependencies
+
+We can use JavaScript's Functional nature to avoid using directly accessing the Global scope. Global scope is unpredictable, all of your code, and all of your libraries code, have access to Global scope.
+
+```javascript
+
+var Module = (function($, _){
+	
+})($, _);
+
+```
+
 
 
 
