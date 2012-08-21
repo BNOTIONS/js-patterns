@@ -28,7 +28,36 @@ $('.some_selector').click(function(e){
 
 ```
 
-Now all of the code that you have written is directly tied to the DOM. Our jobs demand that we write more and more complex JavaScript everyday, heck we are building "Web Applications". Users demand a more interactive experiance with their Web Applications, so we must write more JavaScript and apply more classical approaches to writing clean, maintainable code.
+Now all of the code that you have written is directly tied to the DOM. Our jobs demand that we write more and more complex JavaScript everyday, heck we are building "Web Applications". Users demand a more interactive experiance with their Web Applications, so we must write more JavaScript and apply more classical approaches to writing clean, maintainable and testable code.
+
+Introduction
+------------
+
+The Module Pattern is a clean way of adding classic Object Oriented behaviour to JavaScripts Functional style. It can help you build a better mental model of the application you want to write, decouple your code from the DOM and event allow for inheritance.
+
+Anatomy Of A Module
+-------------------
+
+1. Self Executing Function
+
+```javascript
+
+var Module = function(){
+	
+}();
+
+```
+
+A function definition can be immediatly executed by have a pair of parenthese after its closing brackets. In this case the result of this function executing is stored in the variable "Module". It is typical that you will see the function itself wrapped in parenthese, this a convention used by the community to make distinguish self executing functions from normal ones.
+
+```javascript
+
+var Module = (function(){
+	
+})();
+
+```
+
 
 
 
