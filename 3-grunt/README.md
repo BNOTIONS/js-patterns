@@ -20,10 +20,10 @@ Transform one (higher order) language into another. In the case of CSS, it is of
 
 All of these different functions are preformed by some sort of build tool or script. In our case we are going to use a Node.js based system called Grunt. Other popular examples of build tools are Asset Pipeline (for Rails)/Sprockets in Ruby and Assetic in PHP.
 
-Grunt.js
---------
+Grunt
+-----
 
-Grunt is a simple to use build tool for front end assets. It has a strong plugin community and its configuration is done in plain JSON.
+[Grunt](https://github.com/cowboy/grunt) is a simple to use build tool for front end assets. It has a strong plugin community and its configuration is done in plain JSON.
 
 ## Installation
 
@@ -33,7 +33,7 @@ Check out [nodejs.org](http://nodejs.org/). Installers for all platforms are pre
 
 ### 1. Globally Install Grunt
 
-NPM (Node Package Manager) is the official package manager for Node. It is an easy to use command line tool for install your favorite Node libraries and packages. From the command line packages are installed like so: 
+NPM (Node Package Manager) is the official package manager for Node. It is an easy to use command line tool for install your favorite Node libraries and packages. You can install packages from the command line like so: 
 
 ```bash
 npm install pacakge-name
@@ -53,8 +53,14 @@ Lets double check that you have installed Grunt correctly. Run this command:
 grunt --version
 ```
 
-
 ### 2. Generate Gruntfile
+
+Grunt comes with handy command line tool for generating its configuration files. It has multiple modes for generating folder strucutre for projects aswell, but we are just going to use its basic "gruntfile" mode. Navigate to this folder, run the command and follow the interative prompts:
+
+```bash
+cd ~/js-patterns/3-grunt/
+grunt init:gruntfile
+```
 
 
 
