@@ -33,14 +33,28 @@ Check out [nodejs.org](http://nodejs.org/). Installers for all platforms are pre
 
 ### 1. Globally Install Grunt
 
-NPM (Node Package Manager) is the official package manager for Node. It is an easy to use command line tool for install your favorite Node libraries and packages. From the command line packages are installed like so 
+NPM (Node Package Manager) is the official package manager for Node. It is an easy to use command line tool for install your favorite Node libraries and packages. From the command line packages are installed like so: 
 
 ```bash
 npm install pacakge-name
 ```
 Note: You may need to use sudo on Mac/Linux.
 
+This command will install the pacakge locally for current directory. Grunt, you want to install globally however, so its binary can be executed anywhere. Install Grunt locally with this command:
+
+```bash
+npm install -g grunt
+```
+Note: Again, sudo may be required.
+
+Lets double check that you have installed Grunt correctly. Run this command:
+
+```bash
+grunt --version
+```
 
 
 ### 2. Generate Gruntfile
+
+
 
