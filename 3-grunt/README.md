@@ -135,6 +135,40 @@ or just the "js_min" sub-task:
 ```bash
 grunt min:js_min
 ```
+
+
+### Task Definition
+
+Running one task at a time sucks. So lets define a custom task to run multiple tasks. Add this below your Grunt.initConfig function:
+
+```javascript
+grunt.registerTask('default', 'concat min');
+// Task Name ---------^           |
+// Tasks to execute ---------------
+```
+
+The "default" task, when defined, is a special task. It is run whenver your execute the grunt command without any arguments. Like so:
+
+```bash
+grunt
+```
+
+You can also define arbitrary tasks with the same pattern:
+
+```javascript
+grunt.registerTask('production', 'concat min');
+// Task Name ---------^           |
+// Tasks to execute ---------------
+```
+
+This task can be executed with:
+
+```bash
+grunt production
+```
+
+
+
  
 
 
