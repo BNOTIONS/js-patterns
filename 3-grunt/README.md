@@ -99,6 +99,45 @@ The concat task is actually a special (but common type) of Task called a Multi-t
 grunt concat
 ```
 
+You can run just the "dist_js" sub-task like so:
+
+```bash
+grunt concat:dist_js
+```
+
+Lets add a second included task, min:
+
+```javascript
+grunt.initConfig({
+    concat: { 
+      dist_js: { 
+        src: ['lib/jquery-1.7.2.js', 'lib/underscore.js'], 
+        dest: 'dist/app.js'
+      }
+    },
+    min: {
+      js_min: {
+        src: ['dist/baz.js'],
+        dest: 'dist/baz-min.js'
+      }
+    }
+});
+```
+
+This task will preform a simple minification of the file. min is a multi-task like concat so your build can have multiple minification targets. You can run the min task like so:
+
+```bash
+grunt min
+```
+
+or just the "js_min" sub-task:
+
+```bash
+grunt min:js_min
+```
+ 
+
+
 
 
 
