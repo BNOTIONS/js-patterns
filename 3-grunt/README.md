@@ -62,5 +62,11 @@ cd ~/js-patterns/3-grunt/
 grunt init:gruntfile
 ```
 
+## Anatomy of a Gruntfile
+
+The Gruntfile or grunt.js is where you will configure Grunt with the tasks you want it to preform on your code. There are a few different components of a Gruntfile.
+
+###
+
 
 
