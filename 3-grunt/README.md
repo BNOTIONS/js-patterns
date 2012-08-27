@@ -66,7 +66,39 @@ grunt init:gruntfile
 
 The Gruntfile or grunt.js is where you will configure Grunt with the tasks you want it to preform on your code. There are a few different components of a Gruntfile.
 
-###
+### initConfig
+
+The majority of Grunt's configuration lives as a JSON object inside the grunt.initConfig function
+
+```javascript
+grunt.initConfig({
+	someTask: {
+
+	}
+});
+```
+
+### Tasks
+
+Grunt primarily revolves around the concept of Tasks. Tasks are the functions that transform your code from one state to another. Grunt comes with several very helpful Tasks. Lets take a look at the "concat" task config:
+
+```javascript
+grunt.initConfig({
+	concat: { // <-- Task Name
+      dist_js: { // <- Multi-task sub-task
+        src: ['lib/jquery-1.7.2.js', 'lib/underscore.js'], // <-- Input Files
+        dest: 'dist/app.js' // <-- Output files
+      }
+    }
+});
+```
+
+The concat task is actually a special (but common type) of Task called a Multi-task. Multi-tasks can define multiple sub tasks that can be preformed independantly. This is helpful because we can use the concat tasks on more than just JS (CSS and HTML for templates comes to mind). For convienance, grunt allows us to reference files from the location of the Gruntfile (grunt.js). From the path containing your Gruntfile (grunt.js), lets run our "concat" task:
+
+```bash
+grunt concat
+```
+
 
 
 
