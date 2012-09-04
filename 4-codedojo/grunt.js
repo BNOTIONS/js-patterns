@@ -14,11 +14,13 @@ module.exports = function(grunt) {
       }
     },
     less: {
-      src: [
-        'less/bootstrap.less', 
-        'less/style.less'
-      ],
-      dest: ['css/bootstrap.css']
+      all: {
+        src: [
+          'less/bootstrap.less', 
+          'less/style.less'
+        ],
+        dest: 'css/style.css'
+      }
     },
     watch: {
       files: ['less/style.less', 'js/*'],

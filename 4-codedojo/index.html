@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Best Todo-List Ever</title>
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="row">
+  
+  <!-- Controls -->
+  <div class="span8 offset1">
+    <button class="btn btn-success">Add</button>
+  </div>
+
+  <!-- Grid -->
+  <div class="span8 offset1 well">
+    <ul class="thumbnails" id="image_list">
+      <li class="span2">
+        <a href="#" class="thumbnail">
+          <img src="http://placekitten.com/260/180" alt="">
+        </a>
+      </li>
+      <li class="span2">
+        <a href="#" class="thumbnail">
+          <img src="http://placekitten.com/260/180" alt="">
+        </a>
+      </li>
+      <li class="span2">
+        <a href="#" class="thumbnail">
+          <img src="http://placekitten.com/260/180" alt="">
+        </a>
+      </li>
+      <li class="span2">
+        <a href="#" class="thumbnail">
+          <img src="http://placekitten.com/260/180" alt="">
+        </a>
+      </li>
+      
+    </ul> 
+    
+  </div>
+</div>
+
+<div class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Modal header</h3>
+  </div>
+  <div class="modal-body">
+    <p>One fine body…</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn">Close</a>
+    <a href="#" class="btn btn-primary">Save changes</a>
+  </div>
+</div>
+
+
+  
+  <!-- underscore template for Todo Item -->
+  <script id="template_item" type="text">
+    <li class="span2">
+      <a href="#" class="thumbnail">
+        <img src="http://placekitten.com/260/180" alt="">
+      </a>
+    </li>
+  </script>
+
+  <script src="src/app.js"></script>
+</body>
+</html>
