@@ -7,8 +7,9 @@ module.exports = function(grunt) {
       js_dist: {
         src: [
           'lib/jquery-1.7.2.js', 
-          'underscore.js', 
-          'backbone-events.js'
+          'lib/underscore.js', 
+          'lib/backbone-events.js',
+          'lib/bootstrap-modal.js'
         ],
         dest: 'dist/app.js'
       }
