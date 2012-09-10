@@ -9,7 +9,11 @@
   <script src="js/lib/chai.js"></script>
   <script src="js/lib/mocha.js"></script>
   <script>mocha.setup('bdd')</script>
+  <script src="js/FizzBuzz.js"></script>
   <script src="tests/test.basics.js"></script>
+  <!-- Uncomment me!
+  <script src="tests/test.fizzbuzz.js"></script>
+  -->
   
 </head>
 
@@ -21,7 +25,7 @@
   <script>
     $(function(){
       mocha
-        .globals(['foo', 'bar']) // acceptable globals
+        .globals(['FizzBuzz']) // acceptable globals
         .run()
     })
   </script>
