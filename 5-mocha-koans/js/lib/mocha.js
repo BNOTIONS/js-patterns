@@ -1192,6 +1192,22 @@ Mocha.prototype.run = function(fn){
   return runner.run(fn);
 };
 
+/**
+ * Sets the bail mode
+ *
+ * @param {Boolean} bail
+ * @return {Mocha}
+ * @api public
+ */
+
+Mocha.prototype.bailMode = function(bail){
+  console.log(this.suite);
+  this.suite._bail= true;
+  //this.suite._bail = bail;
+  return this;
+};
+
+
 }); // module: mocha.js
 
 require.register("reporters/base.js", function(module, exports, require){
@@ -4044,7 +4060,7 @@ function Suite(title, ctx) {
   this._afterAll = [];
   this.root = !title;
   this._timeout = 2000;
-  this._bail = false;
+  this._bail = true;
 }
 
 /**

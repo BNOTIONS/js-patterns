@@ -1,6 +1,7 @@
 // Assign some assertion types from chai.js 
 var assert = chai.assert,
-    should = chai.should;
+    expect = chai.expect,
+    should = chai.should();
 
 
 // 'describe' is used to describe a block of tests
@@ -22,9 +23,40 @@ describe("Mocha", function(){
 
 });
 
-describe("Something", function(){
+describe("Chai", function(){
 
-    it("should", function(){
-        assert.equal(true, false);
+    describe("is a JS Assertion library with", function(){
+
+        it("'assert' style matchers", function(){
+            assert.equal(2, 1+1);
+            // Expected--^   |
+            // Result---------
+        });
+
+        it("'expect' style matchers", function(){
+            var result = 1 + 1;
+            expect(result).to.be.equal(2);
+        });
+
+        it("'should' style matchers", function(){
+            var result = 1 + 1;
+            result.should.equal(2);
+        });
+
+        it("'should' style matchers", function(){
+            var result = 1 + 1;
+            result.should.equal(3);
+        });
+
+
+        it("'should' style matchers", function(){
+            var result = 1 + 1;
+            result.should.equal(4);
+        });
+
+
+
     });
+
+
 });
