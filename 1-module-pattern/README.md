@@ -58,9 +58,9 @@ var Module = (function(){
 
 ```
 
-### 2. Returning a function
+### 2. Returning a function - Closures
 
-In JavaScript, functions are first class. With this in mind, a function can return another function. This is the basis of the Module pattern. 
+In JavaScript, functions are first class. With this in mind, a function can return another function. This is the basis of the Module pattern. This pattern of a function returning a function is reffered to as a Closure.
 
 ```javascript
 
@@ -77,15 +77,75 @@ var Module = (function(){
 
 Because JavaScript is a Functional language, variable scoping happens on a function by function basis. This means that we can use the same variable name inside the self executing function as we use as the variable we use to store the result of the self executing function. Beware: always use the "var" operator. If you do not, a puppy will die.
 
-### 3. Scope Global Dependencies
+### 3. Import Global Dependencies
 
-We can use JavaScript's Functional nature to avoid using directly accessing the Global scope. Global scope is unpredictable, all of your code, and all of your libraries code, have access to Global scope.
+We can use JavaScript's Functional nature to avoid using directly accessing the Global scope. Global scope is unpredictable, all of your code, and all of your libraries code, have access to Global scope. 
+
+```javascript
+
+var Module = (function($, _){ // Global references are passed through 
+                              // this function  
+	var Module = function() {
+
+	};
+
+	return Module;
+	
+})($, _); // Global references are passed in here
+
+```
+
+### 4. The 'Constructor'
+
+One of the biggest features missing from JavaScript's object model is a constructor. However we can simulate a constructor using JavaScript's support for closures. Simply add arguments to the innter functions definition.
 
 ```javascript
 
 var Module = (function($, _){
 	
-})($, _);
+	// This function can treated like a constructor
+	var Module = function(arg1, arg2) {
+		this.arg1 = arg1;
+		this.arg2 = arg2;
+
+
+	}; // End of constructor function
+
+	return Module;
+	
+})($, _); 
+
+```
+
+### 5. Adding methods
+
+Before we return the closure, we can add some methods to the module. These methods will be avaiable to the when we create an instance of the Module.
+
+```javascript
+
+var Module = (function($, _){
+	
+	// This function can treated like a constructor
+	var Module = function(arg1, arg2) {
+		this.arg1 = arg1;
+		this.arg2 = arg2;
+	};
+
+	Module.prototype = {
+
+		foo: function(some_arg) {
+
+		},
+
+		bar: function() {
+			
+		}
+
+	};
+
+	return Module;
+	
+})($, _); 
 
 ```
 

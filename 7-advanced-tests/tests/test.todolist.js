@@ -9,11 +9,14 @@ describe("Todo List", function(){
     // is the piece of code you are testing
 
     beforeEach(function(){
-        sut = new TodoList();
+        sut = new TodoList("#todo_list");
     });
 
-    it("", function(){
-       
+    it("add new item to list", function(){
+        console.log(sut);
+        var mySpy = sinon.spy(sut, "addItem");
+        $("#todo_list .add_item").click();
+        mySpy.should.have.been.calledOnce;
     });
 
         
