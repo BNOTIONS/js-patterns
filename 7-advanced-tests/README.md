@@ -1,30 +1,49 @@
-Introduction to Test Driven Development
-=======================================
+Advanced Testing
+================
 
-### TL;DR
-### Write tests before your code.
+Sinon.js
+--------
 
-# Red, Green, Refactor
-## 1. Red
+(http://sinonjs.org/)[http://sinonjs.org/]
 
-Write a failing test for the functionality you want to implement.
+Sinon as library that allows you to use spys, stubs, and mocks in your tests. It allows you to write truly isolated components and fake out other factors invloved in your tests including XHR.
 
-## 2. Green
+# Spys
 
-Write just enough code to make that test pass. 
+Spys observe the usage of function. A spy can report if a function is called, how many times and with what arguments. Spys are helpful when testing callbacks or events.
 
-## 3. Refactor
+```javascript
 
-If your code is getting ugly, clean it up. Ensure that all tests still pass.
+it("should be called once", function(){
+    
+    var sut = 
 
-Code Kata
-=========
+});
 
-A code kata is an exercise in programming which helps a programmer hone their skills through practice and repetition. [Wikipedia](http://en.wikipedia.org/wiki/Kata_(programming))
+```
 
-A kata is intended to be completed using Test Driven Development.
+# Stubs
 
-String Calculator Kata
-----------------------
+Stubs are functions like spys, but with preprogrammed behaviour. They are useful for getting a Subject Under Test (SUT) into a certain state for testing.
 
-[link](http://osherove.com/tdd-kata-1/)
+```javascript
+
+
+```
+
+
+# Mocks
+
+Mocks are like stubs in the sense that they have preprogrammed behaviour, but also have preprogrammed expectations. If a Mock's expectations are not met, it will make your test fail.
+
+
+Exercise
+--------
+
+Write a todo list using modules and events through Test Driven Development. Focus on isolating modules using events and using spys/stubs/mocks to test those events.
+
+
+1. A todo list that can create todo items.
+2. Todo items should be able to be toggled and deleted.
+3. A counter should keep track of todo items completed vs total items.
+
