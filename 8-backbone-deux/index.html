@@ -12,23 +12,22 @@
     <div class="hero-unit" id="user-container">
 
     </div>
-
   </div> 
 
   <!-- underscore template -->
   <script id="template_user" type="text">
-    <img src="http://flickholdr.com/100/100/<%= tag %>"></img>
+    <img src="<%= image_thumb_url %>"></img>
     <ul>
       <li>Name: <%= name %></li>
-      <li>Age: <%= age %></li>
-      <li>Horse Size: <%= horse_size %></li>
+      <li>Origin: <%= origin %></li>
+      <li>Price: <%= price_in_cents/100 %></li>
     </ul>
   </script>
 
   <script src="js/lib/jquery.js"></script>
   <script src="js/lib/underscore.js"></script>
   <script src="js/lib/backbone.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/app2.js"></script>
 
 </body>
 

@@ -1,47 +1,60 @@
-var View = Backbone.View.extend({
+var User = Backbone.Model.extend({});
+
+var UserView = Backbone.View.extend({
+
+    template: _.template($("#template_user").html()),
 
     events: {
-        'change input': 'doesItChange',
-        'click button': 'deleteCock'
+        "click img" : "clickMe"
     },
 
-    initialize: function(){
-        this.model.on('change',this.logstuff,this);
+    initialize: function() {
+        this.model.on("change", this.render, this);
+        this.model.on("destroy", this.remove, this);
+        return this;
     },
 
-    doesItChange: function(e){
-        //console.log(e);
-        this.model.set('accomplished', e.target.checked);
+    clickMe: function() {
+        console.log('Clicked Img');
     },
 
-    logstuff: function(){
-        console.log('yes');
+    render: function() {
+        var html = this.template(this.model.toJSON());
+        this.$el.html(html);
+        return this;
     },
 
-    deleteCock: function(e){
-        console.log('vasectomy');
+    remove: function() {
         this.$el.remove();
     }
 
-
-
 });
 
-
-
-
-var Task = Backbone.Model.extend({
-
-    defaults: {
-        accomplished: false,
-        text: 'New Task'
+var Collection = Backbone.Collection.extend({
+    model: User,
+    page: 1,
+    url: "http://lcboapi.com/products",
+    parse: function(resp) {
+        console.log(resp);
+        return resp.result;
+    },
+    loadMore: function() {
+        this.page = this.page + 1;
+        var params = {data: {page: this.page, order:"price_in_cents.asc", where:"is_kosher"}, add: true, dataType:'jsonp'};
+    
+        
+        this.fetch(params);
     }
-
 });
 
-var myTask = new Task({});
+var col = new Collection();
 
-var taskItem = new View({
-    model: myTask,
-    el: '#tkas-container .task'
+var $container = $('#user-container');
+
+col.on("add", function(model){
+    console.log(model.get('name'));
+    var view = new UserView({model:model}).render();
+    $container.append(view.$el);
 });
+
+col.fetch({add:true, dataType: 'jsonp', data: {order:"price_in_cents.asc", where:"is_kosher"}});
