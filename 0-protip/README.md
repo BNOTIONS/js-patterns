@@ -28,9 +28,31 @@ TL;DR When in doubt ===
 Functional Scope
 ----------------
 
+```javascript
+
+// Bad
+var foo = "Horse";
+
+var bar = function(){
+    foo = "Logan";
+    console.log(foo); // Logan
+}
+console.log(foo); // Logan
+
+
+// Good
+var foo = "Horse";
+
+var bar = function(){
+    var foo = "Logan";
+    console.log(foo); // Logan
+}
+console.log(foo); // Horse
+
+```
+
 Resources
 ---------
 
 Douglas Crockford
-[Javascript The Good Parts - Video](http://vimeo.com/8691412)
-[Book](http://shop.oreilly.com/product/9780596517748.do)
+[Javascript The Good Parts - Video](http://vimeo.com/8691412) || [Book](http://shop.oreilly.com/product/9780596517748.do)
