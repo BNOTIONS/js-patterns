@@ -5,7 +5,7 @@ Chrome Dev Tools
 ----------------
 TL;DR Never leave home without it.
 
-(Command Line API)[http://getfirebug.com/wiki/index.php/Command_Line_API#.240]
+[Command Line API](http://getfirebug.com/wiki/index.php/Command_Line_API#.240)
 
 Truthy/Falsey
 -------------
@@ -28,4 +28,9 @@ TL;DR When in doubt ===
 Functional Scope
 ----------------
 
+Resources
+---------
 
+Douglas Crockford
+[Javascript The Good Parts - Video](http://vimeo.com/8691412)
+[Book](http://shop.oreilly.com/product/9780596517748.do)
